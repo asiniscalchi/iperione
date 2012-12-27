@@ -9,7 +9,8 @@ class Test_Comparator(unittest.TestCase):
 		self.comparator = Comparator()
 
 	def test_set_no_existent_file(self):
-		self.assertRaises(NameError, self.comparator.setFile1, ("noExistent"))
+		self.assertRaises(IOError, self.comparator.setFile1, ("noExistent"))
+		self.assertRaises(IOError, self.comparator.setFile2, ("noExistent"))
 		
 suite = unittest.TestLoader().loadTestsFromTestCase(Test_Comparator)
 unittest.TextTestRunner(verbosity=2).run(suite)
