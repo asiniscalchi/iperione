@@ -1,5 +1,6 @@
+import mimetypes
 
 class FileIdentifier:
-	def __init__(self):
-		print("Hello World")
+	def mime(self, url):
+		return mimetypes.guess_type(url)
 
