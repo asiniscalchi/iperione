@@ -12,5 +12,5 @@ class Test_Comparator(unittest.TestCase):
 		self.assertRaises(IOError, self.comparator.setFile1, ("noExistent"))
 		self.assertRaises(IOError, self.comparator.setFile2, ("noExistent"))
 		
-suite = unittest.TestLoader().loadTestsFromTestCase(Test_Comparator)
-unittest.TextTestRunner(verbosity=2).run(suite)
+#suite = unittest.TestLoader().loadTestsFromTestCase(Test_Comparator)
+#unittest.TextTestRunner(verbosity=2).run(suite)
