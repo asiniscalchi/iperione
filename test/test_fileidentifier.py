@@ -20,5 +20,5 @@ class Test_FileIdentifier(unittest.TestCase):
 		mime = self.fileIdentifier.mime("./dummy.wav")
 		self.assertEqual("audio/x-wav", mime[0])
 
-#suite = unittest.TestLoader().loadTestsFromTestCase(Test_FileIdentifier)
-#unittest.TextTestRunner(verbosity=2).run(suite)
+suite = unittest.TestLoader().loadTestsFromTestCase(Test_FileIdentifier)
+unittest.TextTestRunner(verbosity=2).run(suite)
