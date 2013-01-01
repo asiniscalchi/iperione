@@ -11,11 +11,11 @@ class Test_Comparator(unittest.TestCase):
 
 	def test_set_no_existent_file(self):
 		self.assertRaises(IOError, self.comparator.setExpected, ("noExistent"))
-		self.assertRaises(IOError, self.comparator.setObtained, ("noExistent"))
+		self.assertRaises(IOError, self.comparator.setResult, ("noExistent"))
 
 	def test_set_existent_file(self):
 		self.comparator.setExpected(self.path + "/dummy.wav")
-		self.comparator.setObtained(self.path + "/dummy.wav")
+		self.comparator.setResult(self.path + "/dummy.wav")
 	
 suite = unittest.TestLoader().loadTestsFromTestCase(Test_Comparator)
 unittest.TextTestRunner(verbosity=2).run(suite)
