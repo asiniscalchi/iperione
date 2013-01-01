@@ -9,8 +9,17 @@ class Test_Comparator(unittest.TestCase):
 		self.comparator = Comparator()
 
 	def test_set_no_existent_file(self):
-		self.assertRaises(IOError, self.comparator.setFile1, ("noExistent"))
-		self.assertRaises(IOError, self.comparator.setFile2, ("noExistent"))
+		self.assertRaises(IOError, self.comparator.setExpected, ("noExistent"))
+		self.assertRaises(IOError, self.comparator.setObtained, ("noExistent"))
+
+	def test_set_existent_file(self):
+		self.comparator.setExpected("dummy.wav")
+		self.comparator.setObtained("dummy.wav")
+
+	def test_compare_two_file(self):
+		self.comparator.setExpected("dummy.wav")
+		self.comparator.setObtained("dummy.wav")
+		self.assertTrue(self.comparator.areEqual())
 		
 suite = unittest.TestLoader().loadTestsFromTestCase(Test_Comparator)
 unittest.TextTestRunner(verbosity=2).run(suite)
