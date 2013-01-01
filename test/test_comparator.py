@@ -7,15 +7,15 @@ import unittest
 class Test_Comparator(unittest.TestCase):
 	def setUp(self):
 		self.comparator = Comparator()
-		self.path = os.path.dirname(__file__)
+		self.contentPath = os.path.dirname(__file__) + "/content"
 
 	def test_set_no_existent_file(self):
 		self.assertRaises(IOError, self.comparator.setExpected, ("noExistent"))
 		self.assertRaises(IOError, self.comparator.setResult, ("noExistent"))
 
 	def test_set_existent_file(self):
-		self.comparator.setExpected(self.path + "/dummy.wav")
-		self.comparator.setResult(self.path + "/dummy.wav")
+		self.comparator.setExpected(self.contentPath + "/dummy.wav")
+		self.comparator.setResult(self.contentPath + "/dummy.wav")
 	
 suite = unittest.TestLoader().loadTestsFromTestCase(Test_Comparator)
 unittest.TextTestRunner(verbosity=2).run(suite)

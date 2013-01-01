@@ -7,11 +7,11 @@ import unittest
 class Test_Comparator_txt(unittest.TestCase):
 	def setUp(self):
 		self.comparator = Comparator_txt()
-		self.path = os.path.dirname(__file__)
+		self.contentPath = os.path.dirname(__file__) + "/content"
 
 	def test_compare(self):
-		self.comparator.setExpected(self.path + "/dummy.txt")
-		self.comparator.setObtained(self.path + "/dummy.txt")
+		self.comparator.setExpected(self.contentPath + "/dummy.txt")
+		self.comparator.setResult(self.contentPath + "/dummy.txt")
 		self.comparator._compare()
 		self.assertTrue(self.comparator.areEqual())
 		
