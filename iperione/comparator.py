@@ -11,6 +11,3 @@ class Comparator:
 			raise IOError(url + " doesn't exist")
 		self.file2 = url
 
-	def areEqual(self):
-		return False
-
