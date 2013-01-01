@@ -10,8 +10,9 @@ class Test_Comparator_txt(unittest.TestCase):
 		self.path = os.path.dirname(__file__)
 
 	def test_compare(self):
-		self.comparator.setExpected(self.path + "/dummy.wav")
-		self.comparator.setObtained(self.path + "/dummy.wav")
+		self.comparator.setExpected(self.path + "/dummy.txt")
+		self.comparator.setObtained(self.path + "/dummy.txt")
+		self.comparator._compare()
 		self.assertTrue(self.comparator.areEqual())
 		
 suite = unittest.TestLoader().loadTestsFromTestCase(Test_Comparator_txt)

@@ -16,11 +16,6 @@ class Test_Comparator(unittest.TestCase):
 	def test_set_existent_file(self):
 		self.comparator.setExpected(self.path + "/dummy.wav")
 		self.comparator.setObtained(self.path + "/dummy.wav")
-
-	def test_compare_two_file(self):
-		self.comparator.setExpected(self.path + "/dummy.wav")
-		self.comparator.setObtained(self.path + "/dummy.wav")
-		self.assertTrue(self.comparator.areEqual())
-		
+	
 suite = unittest.TestLoader().loadTestsFromTestCase(Test_Comparator)
 unittest.TextTestRunner(verbosity=2).run(suite)
