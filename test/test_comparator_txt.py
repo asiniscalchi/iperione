@@ -12,7 +12,6 @@ class Test_Comparator_txt(unittest.TestCase):
 	def test_compare(self):
 		self.comparator.setExpected(self.contentPath + "/dummy.txt")
 		self.comparator.setResult(self.contentPath + "/dummy.txt")
-		self.comparator._compare()
 		self.assertTrue(self.comparator.areEqual())
 		
 suite = unittest.TestLoader().loadTestsFromTestCase(Test_Comparator_txt)
