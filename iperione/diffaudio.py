@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*-
 """
 Copyright 2012 David García Garzón
+Copyright 2013 Alessandro Siniscalchi <asiniscalchi@gmail.com>
 
-This file is part of back2back
+This file was part of back2back
 
 back2back is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,6 +20,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
+class 
 extensions = [
 	'wav',
 	'ogg',
