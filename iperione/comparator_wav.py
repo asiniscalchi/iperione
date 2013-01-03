@@ -1,4 +1,6 @@
 import os, sys, difflib
+import wavefile_audiolab
+
 from comparator import Comparator
 
 class Comparator_wav(Comparator):
