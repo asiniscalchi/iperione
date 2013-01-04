@@ -9,12 +9,12 @@ class Test_Comparator_wav(unittest.TestCase):
 		self.comparator = Comparator_wav()
 		self.contentPath = os.path.dirname(__file__) + "/content"
 
-	def test_equal_files(self):
+	def test_same_file(self):
 		self.comparator.setExpected(self.contentPath + "/sine_440Hz_1sec_44100_16bits.wav")
 		self.comparator.setResult(self.contentPath + "/sine_440Hz_1sec_44100_16bits.wav")
 		self.assertTrue(self.comparator.areEqual())
 
-	def test_different_files(self):
+	def test_different_duration_files(self):
 		self.comparator.setExpected(self.contentPath + "/sine_440Hz_1sec_44100_16bits.wav")
 		self.comparator.setResult(self.contentPath + "/sine_440Hz_2sec_44100_16bits.wav")
                 self.assertFalse(self.comparator.areEqual())

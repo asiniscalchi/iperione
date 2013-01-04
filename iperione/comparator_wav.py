@@ -8,12 +8,15 @@ class Comparator_wav(Comparator):
 	def _specializedCompare(self):
 		self.sndfile_expected = Sndfile(self.expected)
 		self.sndfile_result = Sndfile(self.result)
-		return
-#		expectedLines = open(self.expected, 'U').readlines()
-#		resultLines = open(self.result, 'U').readlines()
-#		self.diff = difflib.unified_diff(expectedLines, resultLines, self.expected, self.result)
-
+		if self.sndfile_result.nframes != self.sndfile_expected.nframes:
+			self.diff = "ciaociao"
+		else:
+			self.diff = None
+	
 	def areEqual(self):
+		if self.diff != None:
+			return False
+
 		return True		
 	
 
