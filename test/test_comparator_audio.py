@@ -4,7 +4,7 @@ sys.path.insert(0,os.path.abspath(__file__+"/../.."))
 from iperione.comparator_audio import Comparator_audio
 import unittest
 
-class Test_Comparator_wav(unittest.TestCase):
+class Test_Comparator_audio(unittest.TestCase):
 	def setUp(self):
 		self.comparator = Comparator_audio()
 		self.contentPath = os.path.dirname(__file__) + "/content"
