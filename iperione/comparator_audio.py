@@ -4,7 +4,7 @@ import wavefile_audiolab
 from comparator import Comparator
 from scikits.audiolab import Sndfile
 
-class Comparator_wav(Comparator):
+class Comparator_audio(Comparator):
 	def _specializedCompare(self):
 		self.sndfile_expected = Sndfile(self.expected)
 		self.sndfile_result = Sndfile(self.result)
