@@ -9,6 +9,13 @@ class Test_Comparator(unittest.TestCase):
 		self.comparator = Comparator()
 		self.contentPath = os.path.dirname(__file__) + "/content"
 
+	def test_set_no_file(self):
+		self.assertTrue(self.comparator.areEqual)
+
+	def test_set_only_one_file(self):
+		self.comparator.setExpected(self.contentPath + "/dummy.wav")
+		self.assertFalse(self.comparator.areEqual) 
+	
 	def test_set_no_existent_file(self):
 		self.assertRaises(IOError, self.comparator.setExpected, ("noExistent"))
 		self.assertRaises(IOError, self.comparator.setResult, ("noExistent"))
