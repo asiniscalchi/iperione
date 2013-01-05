@@ -16,7 +16,6 @@ class Comparator_wav(Comparator):
 	def areEqual(self):
 		if self.diff != None:
 			return False
-
 		return True		
 	
 

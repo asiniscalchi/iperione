@@ -18,6 +18,3 @@ class Test_Comparator_wav(unittest.TestCase):
 		self.comparator.setExpected(self.contentPath + "/sine_440Hz_1sec_44100_16bits.wav")
 		self.comparator.setResult(self.contentPath + "/sine_440Hz_2sec_44100_16bits.wav")
                 self.assertFalse(self.comparator.areEqual())
-		
-suite = unittest.TestLoader().loadTestsFromTestCase(Test_Comparator_wav)
-unittest.TextTestRunner(verbosity=2).run(suite)

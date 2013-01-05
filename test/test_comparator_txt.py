@@ -18,6 +18,3 @@ class Test_Comparator_txt(unittest.TestCase):
 		self.comparator.setExpected(self.contentPath + "/dummy.txt")
                 self.comparator.setResult(self.contentPath + "/dummy2.txt")
                 self.assertFalse(self.comparator.areEqual())
-		
-suite = unittest.TestLoader().loadTestsFromTestCase(Test_Comparator_txt)
-unittest.TextTestRunner(verbosity=2).run(suite)
