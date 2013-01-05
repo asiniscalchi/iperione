@@ -2,7 +2,7 @@ import os, sys, difflib
 from comparator import Comparator
 
 class Comparator_txt(Comparator):
-	def _specializedCompare(self):
+	def run(self):
 		expectedLines = open(self.expected, 'U').readlines()
 		resultLines = open(self.result, 'U').readlines()
 		self.diff = difflib.unified_diff(expectedLines, resultLines, self.expected, self.result)
