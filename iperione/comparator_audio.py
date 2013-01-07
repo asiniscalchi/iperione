@@ -9,7 +9,7 @@ class Comparator_audio(Comparator):
 		self.areEqual = True
 		self.diff_nSamples = 0
 
-	def _specializedCompare(self):
+	def run(self):
 		self.__init__()
 		self.sndfile_expected = Sndfile(self.expected)
 		self.sndfile_result = Sndfile(self.result)

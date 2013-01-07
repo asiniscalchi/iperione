@@ -12,12 +12,11 @@ class Test_Comparator_txt(unittest.TestCase):
 	def test_equal_files(self):
 		self.comparator.setExpected(self.contentPath + "/dummy.txt")
 		self.comparator.setResult(self.contentPath + "/dummy.txt")
-		self.assertTrue(self.comparator.areEqual())
+		self.comparator.run()
+		self.assertTrue(self.comparator.areEqual)
 
 	def test_different_files(self):
 		self.comparator.setExpected(self.contentPath + "/dummy.txt")
                 self.comparator.setResult(self.contentPath + "/dummy2.txt")
-                self.assertFalse(self.comparator.areEqual())
-		
-suite = unittest.TestLoader().loadTestsFromTestCase(Test_Comparator_txt)
-unittest.TextTestRunner(verbosity=2).run(suite)
+		self.comparator.run()
+                self.assertFalse(self.comparator.areEqual)
