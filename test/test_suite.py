@@ -9,4 +9,3 @@ class Test_Suite(unittest.TestCase):
 
 	def test_set_name(self):
 		self.suite.name = "Suite"
-
