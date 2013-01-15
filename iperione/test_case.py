@@ -6,16 +6,19 @@ class TestCase:
 		self.command = ""
 		self.output = ""
 		self.expected = ""
+		self.diff = None
 
 	def run(self):
 		fileIdentifier = FileIdentifier()
 		mime_output = fileIdentifier.mime(self.output)
 		mime_expected = fileIdentifier.mime(self.expected)
 		if mime_output != mime_expected:
-			return True
-		return False
+			self.diff = "" + self.output + " " + self.expected + " differ in type"
+			return
+		self.diff = None
 
 	def areEqual(self):
-		return False
-		
+		if self.diff == None:
+			return False
+		return True
 
