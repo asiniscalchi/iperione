@@ -10,13 +10,13 @@ class Test_FileIdentifier(unittest.TestCase):
 
 	def test_no_existent_file(self):
 		mime = self.fileIdentifier.mime("noExistent")
-		self.assertEqual(None, mime[0])
+		self.assertEqual(None, mime)
 		
 	def test_txt_file(self):
 		mime = self.fileIdentifier.mime("./dummy.txt")
-		self.assertEqual("text/plain", mime[0])
+		self.assertEqual("text/plain", mime)
 
 	def test_wav_file(self):
 		mime = self.fileIdentifier.mime("./dummy.wav")
-		self.assertEqual("audio/x-wav", mime[0])
+		self.assertEqual("audio/x-wav", mime)
 
