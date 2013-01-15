@@ -1,8 +1,8 @@
 import sys,os
 sys.path.insert(0,os.path.abspath(__file__+"/../.."))
 
-from iperione.comparator import Comparator
 import unittest
+from iperione.comparator import Comparator
 
 class Test_Comparator(unittest.TestCase):
 	def setUp(self):
@@ -17,5 +17,3 @@ class Test_Comparator(unittest.TestCase):
 		self.comparator.setExpected(self.contentPath + "/dummy.wav")
 		self.comparator.setResult(self.contentPath + "/dummy.wav")
 	
-suite = unittest.TestLoader().loadTestsFromTestCase(Test_Comparator)
-unittest.TextTestRunner(verbosity=2).run(suite)
