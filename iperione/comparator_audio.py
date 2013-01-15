@@ -5,7 +5,6 @@ from comparator import Comparator
 from scikits.audiolab import Sndfile
 class Comparator_audio(Comparator):
 	def __init__(self):
-		self.areEqual = True
 		self.diff_nSamples = 0
 
 	def run(self):
