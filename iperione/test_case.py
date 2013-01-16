@@ -1,5 +1,7 @@
 from fileidentifier import FileIdentifier 
 
+import subprocess
+
 class TestCase:
 	def __init__(self):
 		self.name = ""
@@ -15,7 +17,10 @@ class TestCase:
 		if mime_output != mime_expected:
 			self.diff = "" + self.output + " " + self.expected + " differ in type"
 			return
-		self.diff = None
+		subprocess.call(self.command, shell=True)
+		
+
+		
 
 	def areEqual(self):
 		if self.diff == None:
