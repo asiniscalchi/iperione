@@ -8,22 +8,26 @@ class TestCase:
 		self.command = ""
 		self.output = ""
 		self.expected = ""
-		self.diff = None
+		self.diff = ""
 
 	def run(self):
 		fileIdentifier = FileIdentifier()
 		mime_output = fileIdentifier.mime(self.output)
 		mime_expected = fileIdentifier.mime(self.expected)
+
+		if (mime_output == None) or (mime_expected == None):
+			self.diff += self.output + " or " +  self.expected + " is not recognize"
+			return
+
 		if mime_output != mime_expected:
-			self.diff = "" + self.output + " " + self.expected + " differ in type"
+			self.diff += self.output + " " + self.expected + " differ in type"
 			return
 		subprocess.call(self.command, shell=True)
-		
 
 		
 
 	def areEqual(self):
-		if self.diff == None:
-			return False
-		return True
+		if self.diff == "":
+			return True
+		return False
 
