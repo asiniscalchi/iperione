@@ -31,18 +31,16 @@ class Test_TestCase(unittest.TestCase):
 		self.testCase.expected = "unexistent.wav"
 		self.testCase.run()
 		self.assertFalse(self.testCase.areEqual())
-"""
+
 	def test_mime_result_expected_are_the_same(self):
 		self.testCase.output = "unexistent.txt"
 		self.testCase.expected = "unexistent.txt"
 		self.testCase.run()
 		self.assertTrue(self.testCase.areEqual())
-"""
-"""
+
 	def test_run_copy_file(self):
 		self.testCase.command = "python " + self.contentPath + "/copyfile.py " + self.contentPath +"/dummy.txt " + self.contentPath + "/dummy_result.txt"
 		self.testCase.output = "dummy_result.txt"
 		self.testCase.expected = "dummy.txt"
 		self.testCase.run()
 		self.assertTrue(self.testCase.areEqual())
-"""
