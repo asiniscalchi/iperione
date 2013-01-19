@@ -13,6 +13,7 @@ class Test_TestCase(unittest.TestCase):
 		self.assertEqual("", self.testCase.output)
 		self.assertEqual("", self.testCase.expected)
 		self.assertEqual("", self.testCase.name)
+		self.assertEqual(None, self.testCase.diff)
 		self.assertRaises(IOError, self.testCase.run)
 		self.assertFalse(self.testCase.areEqual())
 
