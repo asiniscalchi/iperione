@@ -32,9 +32,15 @@ class Test_TestCase(unittest.TestCase):
 		self.testCase.run()
 		self.assertFalse(self.testCase.areEqual())
 
-	def test_mime_result_expected_are_the_same(self):
+	def test_mime_result_expected_are_the_same_unexistent_file(self):
 		self.testCase.output = "unexistent.txt"
 		self.testCase.expected = "unexistent.txt"
+		self.testCase.run()
+		self.assertTrue(self.testCase.areEqual())
+
+	def test_mime_result_expected_are_the_same(self):
+		self.testCase.output = self.contentPath + "dummy.txt"
+		self.testCase.expected = self.contentPath + "dummy.txt"
 		self.testCase.run()
 		self.assertTrue(self.testCase.areEqual())
 
