@@ -44,6 +44,12 @@ class Test_TestCase(unittest.TestCase):
 		self.testCase.run()
 		self.assertFalse(self.testCase.areEqual())
 
+	def test_audio_same_files(self):
+		self.testCase.output = self.contentPath + "/dummy.wav"
+                self.testCase.expected = self.contentPath + "/dummy.wav"
+                self.testCase.run()
+                self.assertTrue(self.testCase.areEqual())
+
 	def test_run_copy_file(self):
 		self.testCase.command = "python " + self.contentPath + "/copyfile.py " + self.contentPath +"/dummy.txt " + self.contentPath + "/dummy_result.txt"
 		self.testCase.output = self.contentPath + "/dummy_result.txt"
