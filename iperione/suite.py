@@ -1,19 +1,19 @@
+from test_case import TestCase
 
 class Suite:
 	def __init__(self):
 		self.name = ""
-		self.inputPath = None
-		self.outputPath = None
-		self.expectedPath = None
+		self.outputsPath = ""
+		self.expectedsPath = ""
 		self.testCases = []
 
-	def addTest(self, testCase):
-		self.testCases.append(testCase)
+	def addTest(self, name, expected, output, command=""):
+		self.testCases.append(TestCase(name, expected, output, command))
 
 	def run(self):
 		for testCase in self.testCases:
-			if self.inputPath:
-				testCase.inputPath = self.inputPath
+			testCase.outputPath = self.outputsPath
+			testCase.expectedPath = self.expectedsPath
 			testCase.run()
 
 

@@ -14,9 +14,8 @@ class Test_TestCase(unittest.TestCase):
 		self.assertEqual("", self.testCase.output)
 		self.assertEqual("", self.testCase.expected)
 		self.assertEqual("", self.testCase.name)
-		self.assertEqual(None, self.testCase.inputPath)
-		self.assertEqual(None, self.testCase.expectedPath)
-		self.assertEqual(None, self.testCase.outputPath)
+		self.assertEqual("", self.testCase.expectedPath)
+		self.assertEqual("", self.testCase.outputPath)
 		self.assertEqual(None, self.testCase.diff)
 		self.assertRaises(IOError, self.testCase.run)
 		self.assertFalse(self.testCase.areEqual())
@@ -65,6 +64,15 @@ class Test_TestCase(unittest.TestCase):
 		self.testCase.command = "python " + self.contentPath + "/copyfile.py " + self.contentPath +"/dummy.txt " + self.contentPath + "/dummy_result.txt"
 		self.testCase.output = self.contentPath + "/dummy_result.txt"
 		self.testCase.expected = self.contentPath + "/dummy.txt"
+		self.testCase.run()
+		self.assertTrue(self.testCase.areEqual())
+
+	def test_run_copy_file_using_paths(self):
+		self.testCase.expectedPath = self.contentPath + '/'
+		self.testCase.outputPath = self.contentPath + '/'
+		self.testCase.command = "python " + self.contentPath + "/copyfile.py " + self.contentPath +"/dummy.txt " + self.contentPath + "/dummy_result.txt"
+		self.testCase.output = "dummy_result.txt"
+		self.testCase.expected = "dummy.txt"
 		self.testCase.run()
 		self.assertTrue(self.testCase.areEqual())
 

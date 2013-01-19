@@ -6,26 +6,29 @@ from comparator_audio import Comparator_audio
 import subprocess
 
 class TestCase:
-	def __init__(self, name="", command="", output="", expected=""):
+	def __init__(self, name="", expected="", output="", command=""):
 		self.name = name
 		self.command = command
 		self.output = output
 		self.expected = expected
-		self.inputPath = None
-		self.outputPath = None
-		self.expectedPath = None
+		self.outputPath = ''
+		self.expectedPath = ''
 		self.diff = None
 
 	def run(self):
 		fileIdentifier = FileIdentifier()
-		mime_output = fileIdentifier.mime(self.output)
-		mime_expected = fileIdentifier.mime(self.expected)
+
+		output = self.outputPath + self.output
+		expected = self.expectedPath + self.expected
+
+		mime_output = fileIdentifier.mime(output)
+		mime_expected = fileIdentifier.mime(expected)
 		comparator = self._getComparatorFromMime(mime_output)
 
 		subprocess.call(self.command, shell=True)
 
-		comparator.setExpected(self.expected)
-		comparator.setResult(self.output)
+		comparator.setExpected(expected)
+		comparator.setResult(output)
 		comparator.run()
 
 		self.diff = comparator.diff
