@@ -42,7 +42,6 @@ class Test_TestCase(unittest.TestCase):
 		self.testCase.output = self.contentPath + "/dummy.txt"
 		self.testCase.expected = self.contentPath + "/dummy.txt"
 		self.testCase.run()
-		print self.testCase.diff
 		self.assertTrue(self.testCase.areEqual())
 
 	def test_txt_different_files(self):

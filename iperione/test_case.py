@@ -32,7 +32,7 @@ class TestCase:
 		self.diff = comparator.diff
 
 	def areEqual(self):
-		if self.diff == "":
+		if not self.diff:
 			return True
 		return False
 
