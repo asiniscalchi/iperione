@@ -1,11 +1,12 @@
 import sys,os
 sys.path.insert(0,os.path.abspath(__file__+"/../.."))
 
-import unittest, iperione
+import unittest
+from iperione import TestCase
 
 class Test_TestCase(unittest.TestCase):
 	def setUp(self):
-		self.testCase = iperione.TestCase()
+		self.testCase = TestCase()
 		self.contentPath = os.path.dirname(__file__) + "/content"
 
 	def test_default(self):
@@ -13,6 +14,9 @@ class Test_TestCase(unittest.TestCase):
 		self.assertEqual("", self.testCase.output)
 		self.assertEqual("", self.testCase.expected)
 		self.assertEqual("", self.testCase.name)
+		self.assertEqual(None, self.testCase.inputPath)
+		self.assertEqual(None, self.testCase.expectedPath)
+		self.assertEqual(None, self.testCase.outputPath)
 		self.assertEqual(None, self.testCase.diff)
 		self.assertRaises(IOError, self.testCase.run)
 		self.assertFalse(self.testCase.areEqual())
@@ -63,3 +67,7 @@ class Test_TestCase(unittest.TestCase):
 		self.testCase.expected = self.contentPath + "/dummy.txt"
 		self.testCase.run()
 		self.assertTrue(self.testCase.areEqual())
+
+	def test_set_in_construction(self):
+		testCase = TestCase(expected=self.contentPath + "/dummy.txt", output=self.contentPath + "/dummy.txt")
+		testCase.run()

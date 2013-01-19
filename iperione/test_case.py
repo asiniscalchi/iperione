@@ -6,11 +6,14 @@ from comparator_audio import Comparator_audio
 import subprocess
 
 class TestCase:
-	def __init__(self):
-		self.name = ""
-		self.command = ""
-		self.output = ""
-		self.expected = ""
+	def __init__(self, name="", command="", output="", expected=""):
+		self.name = name
+		self.command = command
+		self.output = output
+		self.expected = expected
+		self.inputPath = None
+		self.outputPath = None
+		self.expectedPath = None
 		self.diff = None
 
 	def run(self):
