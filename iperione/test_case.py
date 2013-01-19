@@ -1,5 +1,7 @@
 from fileidentifier import FileIdentifier 
+from comparator import Comparator
 from comparator_txt import Comparator_txt
+from comparator_audio import Comparator_audio
 
 import subprocess
 
@@ -15,20 +17,14 @@ class TestCase:
 		fileIdentifier = FileIdentifier()
 		mime_output = fileIdentifier.mime(self.output)
 		mime_expected = fileIdentifier.mime(self.expected)
-		"""
-		if (mime_output == None) or (mime_expected == None):
-			self.diff += self.output + " or " +  self.expected + " is not recognize"
-			return
-
-		if mime_output != mime_expected:
-			self.diff += self.output + " " + self.expected + " differ in type"
-			return
-		"""
-		subprocess.call(self.command, shell=True)
 		comparator = self._getComparatorFromMime(mime_output)
+
+		subprocess.call(self.command, shell=True)
+
 		comparator.setExpected(self.expected)
 		comparator.setResult(self.output)
 		comparator.run()
+
 		self.diff = comparator.diff
 
 	def areEqual(self):
@@ -39,5 +35,9 @@ class TestCase:
 		return True
 
 	def _getComparatorFromMime(self, mime):
-		return Comparator_txt()
+		if mime == "text/plain":
+			return Comparator_txt()
+		elif mime == "audio/x-wav":
+			return Comparator_audio()
+		return Comparator()
 

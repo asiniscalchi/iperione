@@ -45,14 +45,14 @@ class Test_TestCase(unittest.TestCase):
 		self.assertFalse(self.testCase.areEqual())
 
 	def test_audio_same_files(self):
-		self.testCase.output = self.contentPath + "/dummy.wav"
-                self.testCase.expected = self.contentPath + "/dummy.wav"
+		self.testCase.output = self.contentPath + "/sine_440Hz_1sec_44100_16bits.wav"
+                self.testCase.expected = self.contentPath + "/sine_440Hz_1sec_44100_16bits.wav"
                 self.testCase.run()
                 self.assertTrue(self.testCase.areEqual())
 
 	def test_audio_same_files(self):
-		self.testCase.output = self.contentPath + "/dummy.wav"
-                self.testCase.expected = self.contentPath + "/dummy2.wav"
+		self.testCase.output = self.contentPath + "/sine_440Hz_1sec_44100_16bits.wav"
+                self.testCase.expected = self.contentPath + "/sine_440Hz_2sec_44100_16bits.wav"
                 self.testCase.run()
                 self.assertFalse(self.testCase.areEqual())
 
