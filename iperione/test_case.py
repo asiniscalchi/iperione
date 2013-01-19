@@ -1,4 +1,5 @@
 from fileidentifier import FileIdentifier 
+from comparator_txt import Comparator_txt
 
 import subprocess
 
@@ -22,12 +23,19 @@ class TestCase:
 		if mime_output != mime_expected:
 			self.diff += self.output + " " + self.expected + " differ in type"
 			return
-		subprocess.call(self.command, shell=True)
 
-		
+		subprocess.call(self.command, shell=True)
+		comparator = self._getComparatorFromMime(mime_output)
+		comparator.setExpected(self.expected)
+		comparator.setResult(self.output)
+		comparator.run()
+		self.diff = comparator.diff
 
 	def areEqual(self):
 		if self.diff == "":
 			return True
 		return False
+
+	def _getComparatorFromMime(self, mime):
+		return Comparator_txt()
 
