@@ -47,4 +47,5 @@ class TestJUnitDocument(unittest.TestCase):
                 JU.JUnitDocument("name")
                 self.assertRaises(TypeError, JU.JUnitDocument)
 
-
+if __name__ == "__main__":
+    unittest.main()

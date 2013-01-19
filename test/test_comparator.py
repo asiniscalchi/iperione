@@ -17,3 +17,5 @@ class Test_Comparator(unittest.TestCase):
 		self.comparator.setExpected(self.contentPath + "/dummy.wav")
 		self.comparator.setResult(self.contentPath + "/dummy.wav")
 	
+if __name__ == "__main__":
+    unittest.main()

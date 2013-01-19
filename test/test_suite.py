@@ -21,3 +21,6 @@ class Test_Suite(unittest.TestCase):
 		self.suite.addTest("2", "dummy.txt", "dummy2.txt")
 		self.suite.addTestCase(TestCase("3", "dummy.txt", "dummy2.txt"))
 		self.suite.run()	
+
+if __name__ == "__main__":
+    unittest.main()

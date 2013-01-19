@@ -20,3 +20,6 @@ class Test_Comparator_txt(unittest.TestCase):
                 self.comparator.setResult(self.contentPath + "/dummy2.txt")
 		self.comparator.run()
                 self.assertFalse(self.comparator.areEqual())
+
+if __name__ == "__main__":
+    unittest.main()

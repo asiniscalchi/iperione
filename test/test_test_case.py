@@ -79,3 +79,6 @@ class Test_TestCase(unittest.TestCase):
 	def test_set_in_construction(self):
 		testCase = TestCase(expected=self.contentPath + "/dummy.txt", output=self.contentPath + "/dummy.txt")
 		testCase.run()
+
+if __name__ == "__main__":
+    unittest.main()

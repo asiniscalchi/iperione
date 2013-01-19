@@ -21,3 +21,6 @@ class Test_Comparator_audio(unittest.TestCase):
 		self.comparator.run()
                 self.assertFalse(self.comparator.areEqual())
 		
+
+if __name__ == "__main__":
+    unittest.main()
