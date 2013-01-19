@@ -19,6 +19,5 @@ class Test_Suite(unittest.TestCase):
 		self.suite.expectedsPath = self.contentPath
 		self.suite.addTest("1", "dummy.txt", "dummy.txt")
 		self.suite.addTest("2", "dummy.txt", "dummy2.txt")
-		self.suite.addTest("3", "sine_440Hz_1sec_44100_16bits.wav", "sine_440Hz_1sec_44100_16bits.wav")
-		self.suite.addTest("4", "sine_440Hz_1sec_44100_16bits.wav", "sine_440Hz_2sec_44100_16bits.wav")
+		self.suite.addTestCase(TestCase("3", "dummy.txt", "dummy2.txt"))
 		self.suite.run()	

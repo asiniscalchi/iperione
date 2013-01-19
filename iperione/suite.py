@@ -9,6 +9,9 @@ class Suite:
 
 	def addTest(self, name, expected, output, command=""):
 		self.testCases.append(TestCase(name, expected, output, command))
+	
+	def addTestCase(self, testCase):
+		self.testCases.append(testCase)
 
 	def run(self):
 		for testCase in self.testCases:
