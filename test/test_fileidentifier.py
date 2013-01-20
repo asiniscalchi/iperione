@@ -20,3 +20,6 @@ class Test_FileIdentifier(unittest.TestCase):
 		mime = self.fileIdentifier.mime("./dummy.wav")
 		self.assertEqual("audio/x-wav", mime)
 
+if __name__ == "__main__":
+    unittest.main()
+
