@@ -33,6 +33,8 @@ class TestCase:
 
 		self.diff = comparator.diff
 
+		self._print()
+
 	def areEqual(self):
 		if self.diff is None:
 			return False
@@ -47,3 +49,6 @@ class TestCase:
 			return Comparator_audio()
 		return Comparator()
 
+	def _print(self):
+		for line in self.diff:
+			print line
