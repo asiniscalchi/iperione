@@ -24,8 +24,5 @@ class TestIperione(unittest.TestCase):
 
 		suite.run()
 
-#		reporter = iperione.Reporter()
-
-
 if __name__ == "__main__":
     unittest.main()	
