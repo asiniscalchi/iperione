@@ -10,8 +10,9 @@ main = unittest.main
 
 
 class TestCase(unittest.TestCase):
-    def ola(self):
-        print "Hola"
+	def assertFileEqual(first, second, msg=None):
+		print "Hello World"
+
 """
 	def __init__(self, name="", expected="", output="", command=""):
 		self.name = name
