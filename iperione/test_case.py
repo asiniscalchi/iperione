@@ -4,8 +4,9 @@ from comparator_txt import Comparator_txt
 from comparator_audio import Comparator_audio
 
 import subprocess
+import unittest
 
-class TestCase:
+class TestCase(unittest.TestCase):
 	def __init__(self, name="", expected="", output="", command=""):
 		self.name = name
 		self.command = command
