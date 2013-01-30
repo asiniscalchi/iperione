@@ -8,7 +8,6 @@ import unittest
 
 main = unittest.main
 
-
 class TestCase(unittest.TestCase):
 	def assertFileEqual(first, second, msg=None):
 		print "Hello World"

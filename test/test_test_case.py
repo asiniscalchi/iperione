@@ -7,14 +7,14 @@ from iperione import TestCase # TODO remove
     
 class Test_TestCase(iperione.TestCase):
     def test_dummy(self):
-        self.assertTrue(False)
-    
+        self.assertTrue(True)
+    """"
     def test_expected_unexistent(self):
         self.testCase.expected = "unexistent.wav"
         self.assertRaises(IOError, self.testCase.run)
         self.assertFalse(self.testCase.areEqual())
         
-    """
+    
         def setUp(self):
             self.testCase = TestCase()
             self.contentPath = os.path.dirname(__file__) + "/content"
