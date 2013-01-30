@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Project SYSTEM "Project-4.6.dtd">
+<!-- eric4 project file for project iperione -->
+<!-- Saved: 2013-01-30, 04:42:48 -->
+<!-- Copyright (C) 2013 Alessandro Siniscalchi, asiniscalchi@gmail.com -->
+<Project version="4.6">
+  <Language>en</Language>
+  <ProgLanguage mixed="0">Python</ProgLanguage>
+  <ProjectType>Console</ProjectType>
+  <Description></Description>
+  <Version>0.1</Version>
+  <Author>Alessandro Siniscalchi</Author>
+  <Email>asiniscalchi@gmail.com</Email>
+  <Sources>
+    <Source>reporter_junit.py</Source>
+    <Source>comparator.py</Source>
+    <Source>fileidentifier.py</Source>
+    <Source>diffaudio.py</Source>
+    <Source>test_case.py</Source>
+    <Source>comparator_txt.py</Source>
+    <Source>comparator_audio.py</Source>
+    <Source>suite.py</Source>
+    <Source>wavefile_audiolab.py</Source>
+    <Source>__init__.py</Source>
+    <Source>reporter.py</Source>
+    <Source>junitdocument.py</Source>
+    <Source>test/test_fileidentifier.py</Source>
+    <Source>test/test_comparator.py</Source>
+    <Source>test/test_suite.py</Source>
+    <Source>test/test_test_case.py</Source>
+    <Source>test/test_comparator_audio.py</Source>
+    <Source>test/test_reporter.py</Source>
+    <Source>test/test_iperione.py</Source>
+    <Source>test/test_comparator_txt.py</Source>
+    <Source>test/test_junitdocument.py</Source>
+    <Source>test/test_reporter_junit.py</Source>
+  </Sources>
+  <Forms>
+  </Forms>
+  <Translations>
+  </Translations>
+  <Resources>
+  </Resources>
+  <Interfaces>
+  </Interfaces>
+  <Others>
+  </Others>
+  <MainScript>nosetests</MainScript>
+  <Vcs>
+    <VcsType>None</VcsType>
+  </Vcs>
+  <FiletypeAssociations>
+    <FiletypeAssociation pattern="*.pyw" type="SOURCES" />
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES" />
+    <FiletypeAssociation pattern="*.py" type="SOURCES" />
+    <FiletypeAssociation pattern="*.ptl" type="SOURCES" />
+  </FiletypeAssociations>
+</Project>

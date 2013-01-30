@@ -20,4 +20,3 @@ class Suite:
 			testCase.run()
 
 
-		

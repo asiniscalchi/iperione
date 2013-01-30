@@ -6,7 +6,13 @@ from comparator_audio import Comparator_audio
 import subprocess
 import unittest
 
+main = unittest.main
+
+
 class TestCase(unittest.TestCase):
+    def ola(self):
+        print "Hola"
+"""
 	def __init__(self, name="", expected="", output="", command=""):
 		self.name = name
 		self.command = command
@@ -53,3 +59,4 @@ class TestCase(unittest.TestCase):
 	def _print(self):
 		for line in self.diff:
 			print line
+"""
