@@ -6,9 +6,18 @@ import iperione
 from iperione import TestCase # TODO remove
     
 class Test_TestCase(iperione.TestCase):
-    def test_dummy(self):
-        self.assertTrue(True)
-    """"
+    def setUp(self):
+        self.contentPath = os.path.dirname(__file__) + "/content/"
+        
+    def test_unexistent_files(self):
+        self.assertRaises(IOError,  self.assertAudioFileEqual("unexistent",  "unexistent"))
+
+    def test_different_files(self):
+        self.assertAudioFileEqual(self.contentPath + "sine_440Hz_1sec_44100_16bits.wav",  self.contentPath + "sine_440Hz_2sec_44100_16bits.wav")
+        
+    def test_equals(self):
+        self.assertAudioFileEqual(self.contentPath + "sine_440Hz_1sec_44100_16bits.wav",  self.contentPath + "sine_440Hz_1sec_44100_16bits.wav")
+""" 
     def test_expected_unexistent(self):
         self.testCase.expected = "unexistent.wav"
         self.assertRaises(IOError, self.testCase.run)
