@@ -12,15 +12,14 @@ class TestCase(unittest.TestCase):
         comparator.setResult(second)
             
         comparator.run()
-        
-        print comparator.diff
-        
-        
-        if comparator.diff:
-            standardMsg = "error"
-            #for line in comparator.diff:
-              #  standardMsd += line
-            self.fail(self._formatMessage(msg, standardMsg))
+
+	if not comparator.areEqual():
+		differing = "Files are different:\n"
+		for line in comparator.diff:
+			differing += line
+
+		msg = self._formatMessage(msg, differing)
+		raise self.failureException(msg)
         
 
     """
