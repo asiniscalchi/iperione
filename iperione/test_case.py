@@ -5,24 +5,33 @@ from comparator_audio import Comparator_audio
 main = unittest.main
 
 class TestCase(unittest.TestCase):
-    def assertAudioFileEqual(self,  first, second, msg=None):
-        comparator = Comparator_audio()
-        
-        comparator.setExpected(first)
-        comparator.setResult(second)
-            
-        comparator.run()
+	def __init__(self, methodName='runTest'):
+		unittest.TestCase.__init__(self, methodName)
+		self.expectedsPath = ""
+		self.resultsPath = ""
+		self.diffPath = ""
 
-	if not comparator.areEqual():
-		differing = "Files are different:\n"
-		for line in comparator.diff:
-			differing += line
+	def assertAudioFileEqual(self,  first, second, msg=None):
+		comparator = Comparator_audio()
 
-		msg = self._formatMessage(msg, differing)
-		raise self.failureException(msg)
-        
+		expected = os.path.join(self.expectedsPath, first)
+		comparator.setExpected(expected)
 
-    """
+		result = os.path.join(self.resultsPath, second)
+		comparator.setResult(result)
+
+		comparator.run()
+
+		if not comparator.areEqual():
+			differing = "Files are different:\n"
+			for line in comparator.diff:
+				differing += line
+
+			msg = self._formatMessage(msg, differing)
+			raise self.failureException(msg)
+
+
+	"""
         def __init__(self, name="", expected="", output="", command=""):
             self.name = name
             self.command = command
