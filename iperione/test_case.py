@@ -11,14 +11,14 @@ class TestCase(unittest.TestCase):
 		self.resultsPath = ""
 		self.diffPath = ""
 
-	def assertAudioFileEqual(self,  first, second, msg=None):
+	def assertAudioFileEqual(self,  expected, result, msg=None):
 		comparator = Comparator_audio()
 
-		expected = os.path.join(self.expectedsPath, first)
-		comparator.setExpected(expected)
+		expectedPath = os.path.join(self.expectedsPath, expected)
+		comparator.setExpected(expectedPath)
 
-		result = os.path.join(self.resultsPath, second)
-		comparator.setResult(result)
+		resultPath = os.path.join(self.resultsPath, result)
+		comparator.setResult(resultPath)
 
 		comparator.run()
 
