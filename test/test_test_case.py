@@ -12,6 +12,6 @@ class Test_TestCase(iperione.TestCase):
         
     def test_equals(self):
         self.assertAudioFileEqual("sine_440Hz_1sec_44100_16bits.wav",  "sine_440Hz_1sec_44100_16bits.wav")
-    
+
 if __name__ == "__main__":
     iperione.main()
