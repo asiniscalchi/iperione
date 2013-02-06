@@ -13,11 +13,8 @@ class TestCase(unittest.TestCase):
             
         comparator.run()
         
-        print comparator.diff
-        
-        
         if comparator.diff:
-            standardMsg = "error"
+            standardMsg = comparator.diff
             #for line in comparator.diff:
               #  standardMsd += line
             self.fail(self._formatMessage(msg, standardMsg))
