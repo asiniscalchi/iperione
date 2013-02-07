@@ -7,97 +7,11 @@ from iperione import TestCase # TODO remove
     
 class Test_TestCase(iperione.TestCase):
     def setUp(self):
-        self.contentPath = os.path.dirname(__file__) + "/content/"
-        
-#    def test_unexistent_files(self):
-	#self.assertAudioFileEqual("unexistent", "unexistent")
- #       self.assertRaises(IOError,  self.assertAudioFileEqual, ("ciao","unexistent","unexistent"))
-
-    def test_different_files(self):
-        self.assertAudioFileEqual(self.contentPath + "sine_440Hz_1sec_44100_16bits.wav",  self.contentPath + "sine_440Hz_2sec_44100_16bits.wav")
+	self.expectedsPath = os.path.join(os.path.dirname(__file__), 'content')
+	self.resultsPath = os.path.join(os.path.dirname(__file__), 'content')
         
     def test_equals(self):
-        self.assertAudioFileEqual(self.contentPath + "sine_440Hz_1sec_44100_16bits.wav",  self.contentPath + "sine_440Hz_1sec_44100_16bits.wav")
-""" 
-    def test_expected_unexistent(self):
-        self.testCase.expected = "unexistent.wav"
-        self.assertRaises(IOError, self.testCase.run)
-        self.assertFalse(self.testCase.areEqual())
-        
-    
-        def setUp(self):
-            self.testCase = TestCase()
-            self.contentPath = os.path.dirname(__file__) + "/content"
-    
-        def test_default(self):
-            self.assertEqual("", self.testCase.command)
-            self.assertEqual("", self.testCase.output)
-            self.assertEqual("", self.testCase.expected)
-            self.assertEqual("", self.testCase.name)
-            self.assertEqual("", self.testCase.expectedPath)
-            self.assertEqual("", self.testCase.outputPath)
-            self.assertEqual(None, self.testCase.diff)
-            self.assertRaises(IOError, self.testCase.run)
-            self.assertFalse(self.testCase.areEqual())
-    
-        
-    
-        def test_result_unexistent(self):
-            self.testCase.result = "unexistent.wav"
-                    self.assertRaises(IOError, self.testCase.run)
-            self.assertFalse(self.testCase.areEqual())
-    
-        def test_txt_same_unexistent_file(self):
-            self.testCase.output = "unexistent.txt"
-            self.testCase.expected = "unexistent.txt"
-            self.assertRaises(IOError, self.testCase.run)
-            self.assertFalse(self.testCase.areEqual())
-    
-        def test_txt_same_files(self):
-            self.testCase.output = self.contentPath + "/dummy.txt"
-            self.testCase.expected = self.contentPath + "/dummy.txt"
-            self.testCase.run()
-            self.assertTrue(self.testCase.areEqual())
-    
-        def test_txt_different_files(self):
-            self.testCase.output = self.contentPath + "/dummy.txt"
-            self.testCase.expected = self.contentPath + "/dummy2.txt"
-            self.testCase.run()
-            self.assertFalse(self.testCase.areEqual())
-    
-        def test_audio_same_files(self):
-            self.testCase.output = self.contentPath + "/sine_440Hz_1sec_44100_16bits.wav"
-                    self.testCase.expected = self.contentPath + "/sine_440Hz_1sec_44100_16bits.wav"
-                    self.testCase.run()
-                    self.assertTrue(self.testCase.areEqual())
-    
-        def test_audio_same_files(self):
-            self.testCase.output = self.contentPath + "/sine_440Hz_1sec_44100_16bits.wav"
-                    self.testCase.expected = self.contentPath + "/sine_440Hz_2sec_44100_16bits.wav"
-                    self.testCase.run()
-                    self.assertFalse(self.testCase.areEqual())
-    
-        def test_run_copy_file(self):
-            self.testCase.command = "python " + self.contentPath + "/copyfile.py " + self.contentPath +"/dummy.txt " + self.contentPath + "/dummy_result.txt"
-            self.testCase.output = self.contentPath + "/dummy_result.txt"
-            self.testCase.expected = self.contentPath + "/dummy.txt"
-            self.testCase.run()
-            self.assertTrue(self.testCase.areEqual())
-    
-        def test_run_copy_file_using_paths(self):
-            self.testCase.expectedPath = self.contentPath + '/'
-            self.testCase.outputPath = self.contentPath + '/'
-            self.testCase.command = "python " + self.contentPath + "/copyfile.py " + self.contentPath +"/dummy.txt " + self.contentPath + "/dummy_result.txt"
-            self.testCase.output = "dummy_result.txt"
-            self.testCase.expected = "dummy.txt"
-            self.testCase.run()
-            self.assertTrue(self.testCase.areEqual())
-    
-        def test_set_in_construction(self):
-            testCase = TestCase(expected=self.contentPath + "/dummy.txt", output=self.contentPath + "/dummy.txt")
-            testCase.run()
-            
-        """
-    
+        self.assertAudioFileEqual("sine_440Hz_1sec_44100_16bits.wav",  "sine_440Hz_1sec_44100_16bits.wav")
+
 if __name__ == "__main__":
     iperione.main()

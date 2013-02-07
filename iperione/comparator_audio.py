@@ -11,7 +11,7 @@ class Comparator_audio(Comparator):
 		self.sndfile_expected = Sndfile(self.expected)
 		self.sndfile_result = Sndfile(self.result)
 		if self.sndfile_result.nframes != self.sndfile_expected.nframes:
-			self.diff = "ciaociao"
+			self.diff = "delta samples = " + str(self.sndfile_result.nframes - self.sndfile_expected.nframes)
 		else:
 			self.diff = None
 	
