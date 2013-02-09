@@ -11,6 +11,9 @@ class TestCase(unittest.TestCase):
 		self.resultsPath = ""
 		self.diffPath = ""
 
+    	def execute(self, command):
+    		subprocess.call(command, shell=True)
+
 	def assertAudioFileEqual(self,  expected, result, msg=None):
 		comparator = ComparatorAudio()
 
