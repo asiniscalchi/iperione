@@ -1,6 +1,6 @@
 import os, subprocess
 import unittest
-from comparator_audio import Comparator_audio
+from comparator_audio import ComparatorAudio
 
 main = unittest.main
 
@@ -12,7 +12,7 @@ class TestCase(unittest.TestCase):
 		self.diffPath = ""
 
 	def assertAudioFileEqual(self,  expected, result, msg=None):
-		comparator = Comparator_audio()
+		comparator = ComparatorAudio()
 
 		expectedPath = os.path.join(self.expectedsPath, expected)
 		comparator.setExpected(expectedPath)

@@ -3,7 +3,7 @@ import wavefile_audiolab
 
 from comparator import Comparator
 from scikits.audiolab import Sndfile
-class Comparator_audio(Comparator):
+class ComparatorAudio(Comparator):
 	def __init__(self):
 		self.diff_nSamples = 0
 
