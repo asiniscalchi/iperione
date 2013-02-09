@@ -1,10 +1,10 @@
 import sys,os
 sys.path.insert(0,os.path.abspath(__file__+"/../.."))
 
+import iperione
 from iperione.fileidentifier import FileIdentifier
-import unittest
 
-class Test_FileIdentifier(unittest.TestCase):
+class Test_FileIdentifier(iperione.TestCase):
 	def setUp(self):
 		self.fileIdentifier = FileIdentifier()
 

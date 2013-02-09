@@ -1,10 +1,10 @@
 import sys,os
 sys.path.insert(0,os.path.abspath(__file__+"/../.."))
 
-import unittest
+import iperione
 from iperione.comparator import Comparator
 
-class Test_Comparator(unittest.TestCase):
+class Test_Comparator(iperione.TestCase):
 	def setUp(self):
 		self.comparator = Comparator()
 		self.contentPath = os.path.dirname(__file__) + "/content"
