@@ -7,8 +7,8 @@ main = unittest.main
 class TestCase(unittest.TestCase):
 	def __init__(self, methodName='runTest'):
 		unittest.TestCase.__init__(self, methodName)
-		self.expectedsPath = ""
-		self.resultsPath = ""
+		self.expectedPath = ""
+		self.resultPath = ""
 		self.diffPath = ""
 
     	def execute(self, command):
@@ -17,10 +17,10 @@ class TestCase(unittest.TestCase):
 	def assertAudioFileEqual(self,  expected, result, msg=None):
 		comparator = ComparatorAudio()
 
-		expectedPath = os.path.join(self.expectedsPath, expected)
+		expectedPath = os.path.join(self.expectedPath, expected)
 		comparator.setExpected(expectedPath)
 
-		resultPath = os.path.join(self.resultsPath, result)
+		resultPath = os.path.join(self.resultPath, result)
 		comparator.setResult(resultPath)
 
 		comparator.run()
