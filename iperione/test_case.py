@@ -9,7 +9,6 @@ class TestCase(unittest.TestCase):
 		unittest.TestCase.__init__(self, methodName)
 		self.expectedPath = ""
 		self.resultPath = ""
-		self.commandPath = ""
 		self.diffPath = ""
 
     	def execute(self, command):
