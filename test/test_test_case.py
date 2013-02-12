@@ -1,6 +1,4 @@
 import sys, os, subprocess 
-sys.path.insert(0,os.path.join(os.path.abspath(os.path.dirname(__file__)),'..'))
-
 import iperione
     
 class Test_TestCase(iperione.TestCase):
