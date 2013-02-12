@@ -20,4 +20,4 @@ class Test_Comparator_audio(iperione.TestCase):
                 self.assertFalse(self.comparator.areEqual())
 
 if __name__ == "__main__":
-    unittest.main()
+    iperione.main()

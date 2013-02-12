@@ -16,4 +16,4 @@ class Test_Comparator(iperione.TestCase):
 		self.comparator.setResult(self.contentPath + "/dummy.wav")
 	
 if __name__ == "__main__":
-    unittest.main()
+    iperione.main()

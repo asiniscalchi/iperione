@@ -19,5 +19,5 @@ class Test_FileIdentifier(iperione.TestCase):
 		self.assertEqual("audio/x-wav", mime)
 
 if __name__ == "__main__":
-    unittest.main()
+    iperione.main()
 
