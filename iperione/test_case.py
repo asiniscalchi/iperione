@@ -31,5 +31,11 @@ class TestCase(unittest.TestCase):
 				differing += line
 
 			msg = self._formatMessage(msg, differing)
+			if self.diffPath:
+				self.createDiff(expected, result)
+
 			raise self.failureException(msg)
+
+	def generateDiff(self, expected, result):
+		print("TODO")
 
