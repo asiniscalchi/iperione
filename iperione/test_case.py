@@ -1,6 +1,7 @@
 import os, subprocess
 import unittest
 from comparator_audio import ComparatorAudio
+from diffaudio import differences
 
 main = unittest.main
 
@@ -29,13 +30,6 @@ class TestCase(unittest.TestCase):
 			differing = "Files are different:\n"
 			for line in comparator.diff:
 				differing += line
-
 			msg = self._formatMessage(msg, differing)
-			if self.diffPath:
-				self.createDiff(expected, result)
-
 			raise self.failureException(msg)
-
-	def generateDiff(self, expected, result):
-		print("TODO")
 
