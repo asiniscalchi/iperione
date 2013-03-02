@@ -13,22 +13,26 @@ class ComparatorAudio(Comparator):
 		if not self._isFormatEqual(expected, result):
 			self.diff = str(result) + str(expected)
 			return
-
-		index = 0
-		frameSize = 1024
-		while index < result.nframes:
-			if (result.nframes - index) < frameSize:
-				frameSize = result.nframes - index
-
-			resultFrame = result.read_frames(frameSize)
-			expectedFrame = expected.read_frames(frameSize)
-
-			if not allclose(resultFrame, expectedFrame):
-				self.diff = "Content is different"
-				return;
-
-			index += frameSize
+		if not self._isContentClose(expected, result):
+			self.diff = "Content is different"
+			return
 		self.diff = None
+
+	def _isContentClose(self, expected, result):
+		index = 0
+                frameSize = 1024
+                while index < result.nframes:
+                        if (result.nframes - index) < frameSize:
+                                frameSize = result.nframes - index
+
+                        resultFrame = result.read_frames(frameSize)
+                        expectedFrame = expected.read_frames(frameSize)
+                        if not allclose(resultFrame, expectedFrame):
+                                return False
+
+                        index += frameSize
+		return True
+
 
 	def _isFormatEqual(self, expected, result):
 		if (result.channels != expected.channels 
