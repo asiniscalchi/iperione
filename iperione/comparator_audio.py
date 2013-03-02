@@ -3,6 +3,8 @@ from comparator import Comparator
 from scikits.audiolab import Sndfile
 
 class ComparatorAudio(Comparator):
+	def __init__(self):
+		self.diff = None
 
 	def run(self):
 		expected = Sndfile(self.expected)
@@ -17,13 +19,15 @@ class ComparatorAudio(Comparator):
 		while index < result.nframes:
 			if (result.nframes - index) < frameSize:
 				frameSize = result.nframes - index
+
 			resultFrame = result.read_frames(frameSize)
 			expectedFrame = expected.read_frames(frameSize)
+
 			if not allclose(resultFrame, expectedFrame):
 				self.diff = "Content is different"
 				return;
-			index += frameSize
 
+			index += frameSize
 		self.diff = None
 
 	def _isFormatEqual(self, expected, result):
