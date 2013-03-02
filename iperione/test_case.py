@@ -8,7 +8,7 @@ main = unittest.main
 class TestCase(unittest.TestCase):
 	def __init__(self, methodName='runTest'):
 		unittest.TestCase.__init__(self, methodName)
-		self.expectedPath = ""
+		self.expectedPath = str()
 		self.resultPath = ""
 		self.diffPath = ""
 
