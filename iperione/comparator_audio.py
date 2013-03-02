@@ -7,14 +7,20 @@ from diffaudio import differences
 
 class ComparatorAudio(Comparator):
 	def __init__(self):
-		self.diff_nSamples = 0
+		self.diff = str()
 
 	def run(self):
-		self.sndfile_expected = Sndfile(self.expected)
-		self.sndfile_result = Sndfile(self.result)
+		expected = Sndfile(self.expected)
+		result = Sndfile(self.result)
 #		self.differ()
-		if self.sndfile_result.nframes != self.sndfile_expected.nframes:
-			self.diff = "delta samples = " + str(self.sndfile_result.nframes - self.sndfile_expected.nframes)
+		if (result.channels != expected.channels 
+			or result.encoding != expected.encoding
+			or result.endianness != expected.endianness 
+			or result.file_format != expected.file_format
+			or result.format != expected.format 
+			or result.nframes != expected.nframes 
+			or result.samplerate != expected.samplerate):
+			self.diff += str(result) + str(expected)
 		else:
 			self.diff = None
 	
