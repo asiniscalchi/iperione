@@ -33,7 +33,6 @@ class ComparatorAudio(Comparator):
                         index += frameSize
 		return True
 
-
 	def _isFormatEqual(self, expected, result):
 		if (result.channels != expected.channels 
 			or result.encoding != expected.encoding
