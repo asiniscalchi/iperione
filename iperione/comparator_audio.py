@@ -8,27 +8,25 @@ class ComparatorAudio(Comparator):
 		expected = Sndfile(self.expected)
 		result = Sndfile(self.result)
 
-		if (not self.isFormatEqual(expected, result)):
+		if not self._isFormatEqual(expected, result):
 			self.diff = str(result) + str(expected)
 			return
 
-		frameSize = 1024
 		index = 0
-
-		while(index < result.nframes):
+		frameSize = 1024
+		while index < result.nframes:
 			if (result.nframes - index) < frameSize:
 				frameSize = result.nframes - index
-
 			resultFrame = result.read_frames(frameSize)
 			expectedFrame = expected.read_frames(frameSize)
-			if (not allclose(resultFrame, expectedFrame)):
+			if not allclose(resultFrame, expectedFrame):
 				self.diff = "Content is different"
 				return;
 			index += frameSize
 
 		self.diff = None
 
-	def isFormatEqual(self, expected, result):
+	def _isFormatEqual(self, expected, result):
 		if (result.channels != expected.channels 
 			or result.encoding != expected.encoding
 			or result.endianness != expected.endianness 
