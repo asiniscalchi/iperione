@@ -2,7 +2,6 @@ import os, sys, difflib
 from numpy import allclose
 from comparator import Comparator
 from scikits.audiolab import Sndfile
-from diffaudio import differences
 
 class ComparatorAudio(Comparator):
 
@@ -10,15 +9,9 @@ class ComparatorAudio(Comparator):
 		expected = Sndfile(self.expected)
 		result = Sndfile(self.result)
 
-		if (result.channels != expected.channels 
-			or result.encoding != expected.encoding
-			or result.endianness != expected.endianness 
-			or result.file_format != expected.file_format
-			or result.format != expected.format 
-			or result.nframes != expected.nframes 
-			or result.samplerate != expected.samplerate):
+		if (not self.isFormatEqual(expected, result)):
 			self.diff = str(result) + str(expected)
-			return;
+			return
 
 		frameSize = 1024
 		index = 0
@@ -35,19 +28,15 @@ class ComparatorAudio(Comparator):
 			index += frameSize
 
 		self.diff = None
-	
-	def areEqual(self):
-		if self.diff != None:
+
+	def isFormatEqual(self, expected, result):
+		if (result.channels != expected.channels 
+			or result.encoding != expected.encoding
+			or result.endianness != expected.endianness 
+			or result.file_format != expected.file_format
+			or result.format != expected.format 
+			or result.nframes != expected.nframes 
+			or result.samplerate != expected.samplerate):
 			return False
-		return True		
-
-	def differ(self):
-		self.diff = differences(self.expected, self.result, "diff")
-
-                if self.diff:
-                        print(" Failed")
-                       # os.system('cp %s %s' % (output, badResultName(base,extension)) )
-                       # failures.append("Output '%s':\n%s"%(base, '\n'.join(['\t- %s'%item for item in difference])))
-                       # testcase.appendFailure("Output '%s':\n%s"%(base, '\n'.join(['\t- %s'%item for item in difference])))
-	
+		return True
 

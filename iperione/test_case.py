@@ -26,7 +26,7 @@ class TestCase(unittest.TestCase):
 
 		comparator.run()
 
-		if not comparator.areEqual():
+		if comparator.diff:
 			differing = "Files are different:\n"
 			for line in comparator.diff:
 				differing += line

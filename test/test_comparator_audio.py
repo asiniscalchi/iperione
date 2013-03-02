@@ -11,13 +11,13 @@ class Test_Comparator_audio(iperione.TestCase):
 		self.comparator.setExpected(self.contentPath + "/sine_440Hz_1sec_44100_16bits.wav")
 		self.comparator.setResult(self.contentPath + "/sine_440Hz_1sec_44100_16bits.wav")
 		self.comparator.run()
-		self.assertTrue(self.comparator.areEqual())
+		self.assertTrue(self.comparator.diff == None)
 
 	def test_different_duration_files(self):
 		self.comparator.setExpected(self.contentPath + "/sine_440Hz_1sec_44100_16bits.wav")
 		self.comparator.setResult(self.contentPath + "/sine_440Hz_2sec_44100_16bits.wav")
 		self.comparator.run()
-                self.assertFalse(self.comparator.areEqual())
+                self.assertFalse(self.comparator == None)
 
 if __name__ == "__main__":
     iperione.main()
