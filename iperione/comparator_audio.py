@@ -22,14 +22,11 @@ class ComparatorAudio(Comparator):
 		index = 0
                 frameSize = 1024
                 while index < result.nframes:
-                        if (result.nframes - index) < frameSize:
-                                frameSize = result.nframes - index
-
+                        frameSize = min(result.nframes - index ,frameSize)
                         resultFrame = result.read_frames(frameSize)
                         expectedFrame = expected.read_frames(frameSize)
                         if not allclose(resultFrame, expectedFrame):
                                 return False
-
                         index += frameSize
 		return True
 
