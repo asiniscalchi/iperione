@@ -1,18 +1,15 @@
 import os, sys, difflib
-import wavefile_audiolab
-
+from numpy import allclose
 from comparator import Comparator
 from scikits.audiolab import Sndfile
 from diffaudio import differences
 
 class ComparatorAudio(Comparator):
-	def __init__(self):
-		self.diff = str()
 
 	def run(self):
 		expected = Sndfile(self.expected)
 		result = Sndfile(self.result)
-#		self.differ()
+
 		if (result.channels != expected.channels 
 			or result.encoding != expected.encoding
 			or result.endianness != expected.endianness 
@@ -20,9 +17,24 @@ class ComparatorAudio(Comparator):
 			or result.format != expected.format 
 			or result.nframes != expected.nframes 
 			or result.samplerate != expected.samplerate):
-			self.diff += str(result) + str(expected)
-		else:
-			self.diff = None
+			self.diff = str(result) + str(expected)
+			return;
+
+		frameSize = 1024
+		index = 0
+
+		while(index < result.nframes):
+			if (result.nframes - index) < frameSize:
+				frameSize = result.nframes - index
+
+			resultFrame = result.read_frames(frameSize)
+			expectedFrame = expected.read_frames(frameSize)
+			if (not allclose(resultFrame, expectedFrame)):
+				self.diff = "Content is different"
+				return;
+			index += frameSize
+
+		self.diff = None
 	
 	def areEqual(self):
 		if self.diff != None:
