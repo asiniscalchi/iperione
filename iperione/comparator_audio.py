@@ -1,4 +1,3 @@
-import os, sys, difflib
 from numpy import allclose
 from comparator import Comparator
 from scikits.audiolab import Sndfile
