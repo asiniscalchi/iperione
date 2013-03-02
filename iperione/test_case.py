@@ -9,8 +9,8 @@ class TestCase(unittest.TestCase):
 	def __init__(self, methodName='runTest'):
 		unittest.TestCase.__init__(self, methodName)
 		self.expectedPath = str()
-		self.resultPath = ""
-		self.diffPath = ""
+		self.resultPath = str()
+		self.diffPath = str()
 
     	def execute(self, command, shell=False):
     		subprocess.call(command, shell=shell)
