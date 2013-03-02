@@ -1,4 +1,4 @@
-import os, subprocess
+import os, subprocess, uuid
 import unittest
 from comparator_audio import ComparatorAudio
 from diffaudio import differences
@@ -32,4 +32,7 @@ class TestCase(unittest.TestCase):
 				differing += line
 			msg = self._formatMessage(msg, differing)
 			raise self.failureException(msg)
+
+	def getUniqueFilename(self):
+		return str(uuid.uuid4())
 
