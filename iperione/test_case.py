@@ -1,7 +1,6 @@
 import os, subprocess, uuid
 import unittest
 from comparator_audio import ComparatorAudio
-from diffaudio import differences
 
 main = unittest.main
 
