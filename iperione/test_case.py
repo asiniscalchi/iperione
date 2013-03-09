@@ -1,6 +1,7 @@
 import os, subprocess, uuid
 import unittest
 from comparator_audio import ComparatorAudio
+from comparator_txt import Comparator_txt
 
 main = unittest.main
 
@@ -43,6 +44,6 @@ class TestCase(unittest.TestCase):
                 differing += line
             msg = self._formatMessage(msg, differing)
             raise self.failureException(msg)
-
-    
-
+            
+    def assertTxtFileEqual(self,  expected,  result,  msg=None):
+        comparator = Comparator_txt()

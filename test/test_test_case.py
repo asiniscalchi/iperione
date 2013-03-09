@@ -17,12 +17,15 @@ class Test_TestCase(iperione.TestCase):
     def test_different_audio_file(self):
         self.assertRaises(AssertionError,  self.assertAudioFileEqual,  "sine_440Hz_1sec_44100_16bits.wav",  "square_440Hz_1sec_44100_16bits.wav")
 
-    def test_copied_file(self):
+    def test_copied_audio_file(self):
         result = self.getUniqueFilename()
         command = [sys.executable, os.path.join(self.commandPath, "copyfile.py"), os.path.join(self.inputPath, "sine_440Hz_1sec_44100_16bits.wav"), os.path.join(self.getResultPath(), result)]
         self.execute(command)
         self.assertAudioFileEqual("sine_440Hz_1sec_44100_16bits.wav",  result)
         os.remove(os.path.join(self.getResultPath(), result))
+        
+    def test_txt_same_file(self):
+        self.assertTxtFileEqual("dummy.txt",  "dummy.txt")
 
 if __name__ == "__main__":
     iperione.main()
