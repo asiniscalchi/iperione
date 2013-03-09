@@ -29,21 +29,22 @@ class TestCase(unittest.TestCase):
 
     def assertAudioFileEqual(self,  expected, result, msg=None):
         comparator = ComparatorAudio()
-        self._executeAssert(comparator,  expected,  result,  msg)
+        self._runComparator(comparator,  expected,  result)
+        self._checkDiff(comparator,  msg)
             
     def assertTxtFileEqual(self,  expected,  result,  msg=None):
         comparator = ComparatorTxt()
-        self._executeAssert(comparator,  expected,  result,  msg)
+        self._runComparator(comparator,  expected,  result)
+        self._checkDiff(comparator,  msg)
         
-    def _executeAssert(self, comparator,  expected,  result,  msg=None):
+    def _runComparator(self, comparator,  expected,  result):
         expectedPath = os.path.join(self._expectedPath, expected)
         comparator.setExpected(expectedPath)
-
         resultPath = os.path.join(self._resultPath, result)
         comparator.setResult(resultPath)
-        
         comparator.run()
-
+        
+    def _checkDiff(self,  comparator,  msg=None):
         if comparator.diff:
             differing = "Files are different:\n"
             for line in comparator.diff:
