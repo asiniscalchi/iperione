@@ -19,6 +19,9 @@ class TestCase(unittest.TestCase):
 
     def getResultPath(self):
         return self._resultPath
+        
+    def getUniqueFilename(self):
+        return str(uuid.uuid4())
 
     def execute(self, command, shell=False):
         subprocess.call(command, shell=shell)
@@ -41,6 +44,5 @@ class TestCase(unittest.TestCase):
             msg = self._formatMessage(msg, differing)
             raise self.failureException(msg)
 
-    def getUniqueFilename(self):
-        return str(uuid.uuid4())
+    
 
