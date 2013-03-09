@@ -47,3 +47,18 @@ class TestCase(unittest.TestCase):
             
     def assertTxtFileEqual(self,  expected,  result,  msg=None):
         comparator = ComparatorTxt()
+        
+        expectedPath = os.path.join(self._expectedPath, expected)
+        comparator.setExpected(expectedPath)
+
+        resultPath = os.path.join(self._resultPath, result)
+        comparator.setResult(resultPath)
+        
+        comparator.run()
+
+        if comparator.diff:
+            differing = "Files are different:\n"
+            for line in comparator.diff:
+                differing += line
+            msg = self._formatMessage(msg, differing)
+            raise self.failureException(msg)

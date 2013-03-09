@@ -26,6 +26,9 @@ class Test_TestCase(iperione.TestCase):
         
     def test_txt_same_file(self):
         self.assertTxtFileEqual("dummy.txt",  "dummy.txt")
+        
+    def test_txt_different_file(self):
+        self.assertRaises(AssertionError,  self.assertTxtFileEqual,  "dummy.txt",  "dummy2.txt")
 
 if __name__ == "__main__":
     iperione.main()
