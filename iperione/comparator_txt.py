@@ -1,7 +1,7 @@
 import os, sys, difflib
 from comparator import Comparator
 
-class Comparator_txt(Comparator):
+class ComparatorTxt(Comparator):
 	def run(self):
 		expectedLines = open(self.expected, 'U').readlines()
 		resultLines = open(self.result, 'U').readlines()
