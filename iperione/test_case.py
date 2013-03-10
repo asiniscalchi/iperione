@@ -41,12 +41,12 @@ class TestCase(unittest.TestCase):
     def assertAudioFileEqual(self,  expected, result, msg=None):
         comparator = ComparatorAudio()
         self._runComparator(comparator,  expected,  result)
-        self._checkDiff(comparator,  msg)
+        self._analizeDiff(comparator,  msg)
             
     def assertTxtFileEqual(self,  expected,  result,  msg=None):
         comparator = ComparatorTxt()
         self._runComparator(comparator,  expected,  result)
-        self._checkDiff(comparator,  msg)
+        self._analizeDiff(comparator,  msg)
         
     def _runComparator(self, comparator,  expected,  result):
         expectedPath = os.path.join(self._expectedPath, expected)
@@ -55,7 +55,7 @@ class TestCase(unittest.TestCase):
         comparator.setResult(resultPath)
         comparator.run()
         
-    def _checkDiff(self,  comparator,  msg=None):
+    def _analizeDiff(self,  comparator,  msg=None):
         if comparator.diff:
             differing = "Files are different:\n"
             for line in comparator.diff:
