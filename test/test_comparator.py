@@ -1,8 +1,10 @@
 import sys,os
-import iperione
 from iperione.comparator import Comparator
 
-class Test_Comparator(iperione.TestCase):
+class Test_Comparator(object):
+    def __init__(self):
+        self.__test__ = False
+        
 	def setUp(self):
 		self.comparator = Comparator()
 		self.contentPath = os.path.dirname(__file__) + "/content"
