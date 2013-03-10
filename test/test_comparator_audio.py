@@ -3,19 +3,17 @@ from iperione.comparator_audio import ComparatorAudio
 from test_comparator import  Test_Comparator
 
 class Test_Comparator_audio(iperione.TestCase,  Test_Comparator):
+    __test__ = True
+    
     def setUp(self):
         self.comparator = ComparatorAudio()
         self.contentPath = os.path.dirname(__file__) + "/content"
-
-    def test_same_file(self):
-        self.comparator.setExpected(self.contentPath + "/sine_440Hz_1sec_44100_16bits.wav")
-        self.comparator.setResult(self.contentPath + "/sine_440Hz_1sec_44100_16bits.wav")
-        self.comparator.run()
-        self.assertTrue(self.comparator.diff == None)
-
+        self.file1 = os.path.join(self.contentPath,  'sine_440Hz_1sec_44100_16bits.wav')
+        self.file2 = os.path.join(self.contentPath,  'sine_440Hz_2sec_44100_16bits.wav')
+        
     def test_different_duration_files(self):
-        self.comparator.setExpected(self.contentPath + "/sine_440Hz_1sec_44100_16bits.wav")
-        self.comparator.setResult(self.contentPath + "/sine_440Hz_2sec_44100_16bits.wav")
+        self.comparator.setExpected(self.file1)
+        self.comparator.setResult(self.file2)
         self.comparator.run()
         self.assertFalse(self.comparator == None)
 

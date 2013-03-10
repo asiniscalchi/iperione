@@ -1,21 +1,28 @@
-import sys,os
-from iperione.comparator import Comparator
+import os,  uuid
 
 class Test_Comparator(object):
-    def __init__(self):
-        self.__test__ = False
-        
-    def setUp(self):
-        self.comparator = Comparator()
-        self.contentPath = os.path.dirname(__file__) + "/content"
+    __test__ = False
 
     def test_set_no_existent_file(self):
-        self.assertRaises(IOError, self.comparator.setExpected, ("noExistent"))
-        self.assertRaises(IOError, self.comparator.setResult, ("noExistent"))
+        unexistentFile = str(uuid.uuid4())
+        self.assertRaises(IOError, self.comparator.setExpected, unexistentFile)
+        self.assertRaises(IOError, self.comparator.setResult, unexistentFile)
 
     def test_set_existent_file(self):
-        self.comparator.setExpected(self.contentPath + "/dummy.wav")
-        self.comparator.setResult(self.contentPath + "/dummy.wav")
+        self.comparator.setExpected(os.path.join(self.contentPath,  'dummy.wav'))
+        self.comparator.setResult(os.path.join(self.contentPath,  'dummy.wav'))
+        
+    def test_same_file(self):
+        self.comparator.setExpected(self.file1)
+        self.comparator.setResult(self.file1)
+        self.comparator.run()
+        self.assertTrue(self.comparator.diff == None)
+        
+    def test_different_files(self):
+        self.comparator.setExpected(self.file1)
+        self.comparator.setResult(self.file2)
+        self.comparator.run()
+        self.assertFalse(self.comparator == None)
     
 if __name__ == "__main__":
     iperione.main()

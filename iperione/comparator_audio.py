@@ -21,9 +21,6 @@ from comparator import Comparator
 from scikits.audiolab import Sndfile
 
 class ComparatorAudio(Comparator):
-    def __init__(self):
-        self.diff = None
-
     def run(self):
         expected = Sndfile(self.expected)
         result = Sndfile(self.result)

@@ -19,14 +19,17 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 import os
 
 class Comparator:
-	def setExpected(self, url):
-		if not os.path.exists(url):
-			raise IOError(url + " doesn't exist")
-		self.expected = url
+    def __init__(self):
+        self.diff = None
+        
+    def setExpected(self, url):
+        if not os.path.exists(url):
+            raise IOError(url + " doesn't exist")
+        self.expected = url
 
-	def setResult(self, url):
-		if not os.path.exists(url):
-			raise IOError(url + " doesn't exist")
-		self.result = url
+    def setResult(self, url):
+        if not os.path.exists(url):
+            raise IOError(url + " doesn't exist")
+        self.result = url
 
 

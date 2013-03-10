@@ -1,23 +1,16 @@
 import sys,os
 import iperione
 from iperione.comparator_txt import ComparatorTxt
+from test_comparator import  Test_Comparator
 
-class Test_Comparator_txt(iperione.TestCase):
+class Test_Comparator_txt(iperione.TestCase,  Test_Comparator):
+    __test__ = True
+    
     def setUp(self):
         self.comparator = ComparatorTxt()
         self.contentPath = os.path.dirname(__file__) + "/content"
-
-    def test_equal_files(self):
-        self.comparator.setExpected(self.contentPath + "/dummy.txt")
-        self.comparator.setResult(self.contentPath + "/dummy.txt")
-        self.comparator.run()
-        self.assertTrue(self.comparator.areEqual())
-
-    def test_different_files(self):
-        self.comparator.setExpected(self.contentPath + "/dummy.txt")
-        self.comparator.setResult(self.contentPath + "/dummy2.txt")
-        self.comparator.run()
-        self.assertFalse(self.comparator.areEqual())
+        self.file1 = os.path.join(self.contentPath,  'dummy.txt')
+        self.file2 = os.path.join(self.contentPath,  'dummy2.txt')
 
 if __name__ == "__main__":
     iperione.main()
