@@ -1,8 +1,8 @@
 import sys,os
-import iperione
 from iperione.comparator_audio import ComparatorAudio
+from test_comparator import  Test_Comparator
 
-class Test_Comparator_audio(iperione.TestCase):
+class Test_Comparator_audio(Test_Comparator):
     def setUp(self):
         self.comparator = ComparatorAudio()
         self.contentPath = os.path.dirname(__file__) + "/content"
