@@ -16,8 +16,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 """
 
-import os, subprocess, uuid
-import unittest
+import os,  unittest
 from comparator_audio import ComparatorAudio
 from comparator_txt import ComparatorTxt
 
@@ -38,12 +37,6 @@ class TestCase(unittest.TestCase):
 
     def getResultPath(self):
         return self._resultPath
-        
-    def getUniqueFilename(self):
-        return str(uuid.uuid4())
-
-    def execute(self, command, shell=False):
-        subprocess.call(command, shell=shell)
 
     def assertAudioFileEqual(self,  expected, result, msg=None):
         comparator = ComparatorAudio()

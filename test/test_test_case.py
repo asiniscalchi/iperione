@@ -18,9 +18,9 @@ class Test_TestCase(iperione.TestCase):
         self.assertRaises(AssertionError,  self.assertAudioFileEqual,  "sine_440Hz_1sec_44100_16bits.wav",  "square_440Hz_1sec_44100_16bits.wav")
 
     def test_copied_audio_file(self):
-        result = self.getUniqueFilename()
+        result = iperione.getUniqueFilename()
         command = [sys.executable, os.path.join(self.commandPath, "copyfile.py"), os.path.join(self.inputPath, "sine_440Hz_1sec_44100_16bits.wav"), os.path.join(self.getResultPath(), result)]
-        self.execute(command)
+        iperione.execute(command, shell=False)
         self.assertAudioFileEqual("sine_440Hz_1sec_44100_16bits.wav",  result)
         os.remove(os.path.join(self.getResultPath(), result))
         

@@ -17,3 +17,4 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 """
 
 from .test_case import TestCase,  main
+from .helper import *
