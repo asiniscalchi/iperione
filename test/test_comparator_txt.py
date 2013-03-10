@@ -1,7 +1,6 @@
-import sys,os
-import iperione
-from iperione.comparator_txt import ComparatorTxt
+import sys, os,  iperione
 from test_comparator import  Test_Comparator
+from iperione.comparator_txt import ComparatorTxt
 
 class Test_Comparator_txt(iperione.TestCase,  Test_Comparator):
     __test__ = True

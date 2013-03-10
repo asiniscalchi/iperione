@@ -1,6 +1,6 @@
-import sys,os,  iperione
-from iperione.comparator_audio import ComparatorAudio
+import sys,  os,  iperione
 from test_comparator import  Test_Comparator
+from iperione.comparator_audio import ComparatorAudio
 
 class Test_Comparator_audio(iperione.TestCase,  Test_Comparator):
     __test__ = True
