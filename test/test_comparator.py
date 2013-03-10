@@ -23,6 +23,18 @@ class Test_Comparator(object):
         self.comparator.setResult(self.file2)
         self.comparator.run()
         self.assertFalse(self.comparator == None)
+        
+    def test_diff_creation(self):
+        self.comparator.setExpected(self.file1)
+        self.comparator.setResult(self.file2)
+        self.comparator.setDiffPath(self.diffPath)
+        self.comparator.run()
+        self.assertTrue(os.path.exists(self.diffPath))
+        self.comparator.setExpected(self.diffPath)
+        self.comparator.setResult(self.diffPathExpected)
+        self.comparator.run()
+        self.assertTrue(self.comparator.diff == None)
+        os.remove(self.diffPath)
     
 if __name__ == "__main__":
     iperione.main()

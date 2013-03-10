@@ -21,6 +21,7 @@ import os
 class Comparator:
     def __init__(self):
         self.diff = None
+        self.diffPath = None
         
     def setExpected(self, url):
         if not os.path.exists(url):
@@ -31,5 +32,8 @@ class Comparator:
         if not os.path.exists(url):
             raise IOError(url + " doesn't exist")
         self.result = url
+        
+    def setDiffPath(self,  url):
+        self.diffPath = url
 
 

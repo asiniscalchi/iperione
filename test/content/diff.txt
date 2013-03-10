@@ -1,0 +1,5 @@
+--- /home/asiniscalchi/workspace/iperione/test/content/dummy.txt
++++ /home/asiniscalchi/workspace/iperione/test/content/dummy2.txt
+@@ -1 +1 @@
+-ciaociao
++holaholinaoo

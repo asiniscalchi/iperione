@@ -7,9 +7,11 @@ class Test_Comparator_audio(iperione.TestCase,  Test_Comparator):
     
     def setUp(self):
         self.comparator = ComparatorAudio()
-        self.contentPath = os.path.dirname(__file__) + "/content"
+        self.contentPath = os.path.join(os.path.dirname(__file__),  'content')
         self.file1 = os.path.join(self.contentPath,  'sine_440Hz_1sec_44100_16bits.wav')
-        self.file2 = os.path.join(self.contentPath,  'sine_440Hz_2sec_44100_16bits.wav')
+        self.file2 = os.path.join(self.contentPath,  'square_440Hz_1sec_44100_16bits.wav')
+        self.diffPath = os.path.join(self.contentPath,  'diff_result.wav')
+        self.diffPathExpected = os.path.join(self.contentPath,  'diff.wav')
         
     def test_different_duration_files(self):
         self.comparator.setExpected(self.file1)

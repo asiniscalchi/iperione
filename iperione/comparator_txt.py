@@ -24,8 +24,9 @@ class ComparatorTxt(Comparator):
         expectedLines = open(self.expected, 'U').readlines()
         resultLines = open(self.result, 'U').readlines()
         self.diff = list(difflib.unified_diff(expectedLines, resultLines, self.expected, self.result))
-        if (len(self.diff) == 0):
+        if len(self.diff) == 0:
             self.diff = None
-
-    
-
+            return
+        
+        if self.diffPath:
+            open(self.diffPath,  'w').writelines(self.diff)

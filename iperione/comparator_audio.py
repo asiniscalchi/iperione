@@ -30,6 +30,8 @@ class ComparatorAudio(Comparator):
             return
         if not self._isContentClose(expected, result):
             self.diff = "Content is different"
+            if self.diffPath:
+                self._createDiff(expected,  result)
             return
         self.diff = None
         
@@ -55,4 +57,20 @@ class ComparatorAudio(Comparator):
             or result.samplerate != expected.samplerate):
             return False
         return True
+        
+    def _createDiff(self, expected, result):
+        diff = Sndfile(self.diffPath,  mode='w',  format=result.format,  channels=result.channels,  samplerate=result.samplerate)
+  
+        index = 0
+        frameSize = 1024
+        while index < result.nframes:
+                frameSize = min(result.nframes - index ,frameSize)
+                resultFrame = result.read_frames(frameSize)
+                expectedFrame = expected.read_frames(frameSize)
+                diffFrame = expectedFrame - resultFrame
+                diff.write_frames(diffFrame)
+                if not allclose(resultFrame, expectedFrame):
+                        return
+                index += frameSize
+
 
