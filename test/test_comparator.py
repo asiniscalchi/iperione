@@ -30,10 +30,6 @@ class Test_Comparator(object):
         self.comparator.setDiffPath(self.diffPath)
         self.comparator.run()
         self.assertTrue(os.path.exists(self.diffPath))
-        self.comparator.setExpected(self.diffPath)
-        self.comparator.setResult(self.diffPathExpected)
-        self.comparator.run()
-        self.assertTrue(self.comparator.diff == None)
         os.remove(self.diffPath)
     
 if __name__ == "__main__":
